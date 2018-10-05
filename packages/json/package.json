@@ -1,0 +1,20 @@
+{
+	"name": "commitlint-format-json",
+	"version": "0.0.0",
+	"description": "Format Commitlint output into plain JSON",
+	"keywords": [
+		"commitlint",
+		"format",
+		"json"
+	],
+	"author": "Cedric van Putten <me@bycedric.com>",
+	"homepage": "",
+	"license": "MIT",
+	"main": "src/json.js",
+	"directories": {
+		"lib": "src"
+	},
+	"files": [
+		"lib"
+	]
+}
