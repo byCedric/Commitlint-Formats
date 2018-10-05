@@ -1,0 +1,87 @@
+{
+	"name": "root",
+	"private": true,
+	"scripts": {
+		"test": "ava",
+		"lint": "xo && flow",
+		"build": "lerna exec --parallel 'babel src --out-dir lib --ignore \"**/*.test.js\" --root-mode upward --source-maps --verbose'"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.1.2",
+		"@babel/core": "^7.1.2",
+		"@babel/preset-flow": "^7.0.0",
+		"@babel/register": "^7.0.0",
+		"@peakfijn/config-commitlint": "^0.8.0",
+		"ava": "^1.0.0-beta.8",
+		"babel-eslint": "^10.0.1",
+		"eslint-config-xo-flow": "^0.1.0",
+		"eslint-plugin-flowtype": "^2.50.3",
+		"flow-bin": "^0.82.0",
+		"lerna": "^3.4.1",
+		"xo": "^0.23.0"
+	},
+	"ava": {
+		"require": [
+			"@babel/register"
+		]
+	},
+	"commitlint": {
+		"extends": [
+			"@peakfijn/config-commitlint"
+		],
+		"rules": {
+			"scope-empty": [
+				0,
+				"never"
+			],
+			"scope-enum": [
+				2,
+				"always",
+				[
+					"json",
+					"junit"
+				]
+			]
+		}
+	},
+	"xo": {
+		"extends": "xo-flow",
+		"ignores": [
+			"babel.config.js"
+		],
+		"rules": {
+			"comma-dangle": [
+				"error",
+				"always-multiline"
+			],
+			"flowtype/delimiter-dangle": [
+				"error",
+				"always"
+			],
+			"flowtype/require-parameter-type": [
+				"error",
+				{
+					"excludeArrowFunctions": true
+				}
+			],
+			"import/default": "off",
+			"import/no-unresolved": "off",
+			"import/no-extraneous-dependencies": "off",
+			"object-curly-spacing": [
+				"error",
+				"always",
+				{
+					"objectsInObjects": false
+				}
+			],
+			"valid-jsdoc": [
+				"warn",
+				{
+					"requireReturn": false,
+					"requireParamDescription": false,
+					"requireReturnDescription": false
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,14 @@
+[ignore]
+.*/lib/.*
+
+[include]
+./packages/*
+
+[libs]
+./custom-types
+
+[lints]
+
+[options]
+
+[strict]
