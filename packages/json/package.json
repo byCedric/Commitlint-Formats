@@ -1,6 +1,6 @@
 {
 	"name": "commitlint-format-json",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Format Commitlint output as plain JSON",
 	"keywords": [
 		"commitlint",
