@@ -36,3 +36,25 @@ foo: bar</failure>
   </testsuite>
 </testsuites>
 ```
+
+## Contributing
+
+Contributions are always welcome.
+This project is open source, and anyone may contribute.
+To keep the project healthy and running smoothly, a couple of rules are defined.
+
+1. Keep it friendly and accessible at all times.
+2. Use the templates adequately with the required information.
+3. Adhere the code styling and make sure CI passes.
+
+Make something awesome!
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+--- ---
+
+<p align="center">
+    with :heart: <a href="https://bycedric.com" target="_blank">byCedric</a>
+</p>

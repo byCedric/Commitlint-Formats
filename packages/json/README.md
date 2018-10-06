@@ -26,3 +26,25 @@ $ echo 'foo: bar' | npx commitlint -o commitlint-format-json
 $ echo 'foo: bar' | npx commitlint -x @commitlint/config-conventional -o commitlint-format-json
 {"valid":false,"errorCount":1,"warningCount":0,"results":[{"valid":false,"errors":[{"level":2,"valid":false,"name":"type-enum","message":"type must be one of [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test]"}],"warnings":[],"input":"foo: bar"}]}
 ```
+
+## Contributing
+
+Contributions are always welcome.
+This project is open source, and anyone may contribute.
+To keep the project healthy and running smoothly, a couple of rules are defined.
+
+1. Keep it friendly and accessible at all times.
+2. Use the templates adequately with the required information.
+3. Adhere the code styling and make sure CI passes.
+
+Make something awesome!
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+--- ---
+
+<p align="center">
+    with :heart: <a href="https://bycedric.com" target="_blank">byCedric</a>
+</p>
