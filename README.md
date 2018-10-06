@@ -8,7 +8,7 @@ This repository contains multiple formats for you to use!
 [![Build Status](https://img.shields.io/travis/com/byCedric/Commitlint-Formats/develop.svg?style=flat-square)](https://travis-ci.com/byCedric/Commitlint-Formats)
 [![Codecov coverage](https://img.shields.io/codecov/c/github/byCedric/Commitlint-Formats/develop.svg?style=flat-square)](https://codecov.io/gh/byCedric/Commitlint-Formats)
 [![Code Climate grade](https://img.shields.io/codeclimate/maintainability/byCedric/Commitlint-Formats.svg?style=flat-square)](https://codeclimate.com/github/byCedric/Commitlint-Formats)
-[![Greenkeeper](https://img.shields.io/badge/greenkeeper-enabled-brightgreen.svg?style=flat-square)](https://greenkeeper.io/) [![Greenkeeper badge](https://badges.greenkeeper.io/byCedric/Commitlint-Formats.svg)](https://greenkeeper.io/)
+[![Greenkeeper](https://img.shields.io/badge/greenkeeper-enabled-brightgreen.svg?style=flat-square)](https://greenkeeper.io/)
 
 ## Supported formats
 
