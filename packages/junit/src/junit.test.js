@@ -41,7 +41,7 @@ test('returns string without report', t => {
 });
 
 test('contains testsuite summary', t => {
-	t.true(format(report).includes('testsuite name="commitlint" failures="2" tests="3"'));
+	t.true(format(report).includes('testsuite name="commitlint" errors="0" failures="2" tests="3"'));
 });
 
 test('contains testsuite summary without any tests', t => {
@@ -52,7 +52,7 @@ test('contains testsuite summary without any tests', t => {
 		results: [],
 	});
 
-	t.true(output.includes('testsuite name="commitlint" failures="0" tests="0"'));
+	t.true(output.includes('testsuite name="commitlint" errors="0" failures="0" tests="0"'));
 });
 
 test('contains testsuite summary with only valid tests', t => {
@@ -76,11 +76,11 @@ test('contains testsuite summary with only valid tests', t => {
 		],
 	});
 
-	t.true(output.includes('testsuite name="commitlint" failures="0" tests="2"'));
+	t.true(output.includes('testsuite name="commitlint" errors="0" failures="0" tests="2"'));
 });
 
 test('contains testsuite with only commit header', t => {
-	t.true(format(report).includes('testsuite name="foo: bar" failures="2" tests="2"'));
+	t.true(format(report).includes('testsuite name="foo: bar" errors="0" failures="2" tests="2"'));
 });
 
 test('contains testcase elements with rule name', t => {
