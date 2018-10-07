@@ -18,6 +18,7 @@ const exampleReport = {
 					message: 'type must be one of [feat,fix,test]',
 				},
 			],
+			warnings: [],
 		},
 	],
 };

@@ -11,6 +11,7 @@ declare module '@commitlint/format' {
 		valid: boolean,
 		input: string,
 		errors: RuleIssue[],
+		warnings: RuleIssue[],
 	};
 
 	declare type Report = {
