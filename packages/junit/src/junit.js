@@ -70,6 +70,7 @@ function formatJunit(report?: Report): string {
 	if (report) {
 		output += createElement('testsuite', { indent: 1 }, {
 			name: 'commitlint',
+			errors: 0,
 			failures: report.errorCount + report.warningCount,
 			tests: report.results.reduce(
 				(carry, result) => carry + ((result.errors.length + result.warnings.length) || 1),
@@ -82,6 +83,7 @@ function formatJunit(report?: Report): string {
 
 			output += createElement('testsuite', { indent: 2 }, {
 				name: result.input.split('\n')[0],
+				errors: 0,
 				failures: issues.length,
 				tests: issues.length || 1,
 			});
