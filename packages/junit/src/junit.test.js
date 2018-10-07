@@ -2,10 +2,10 @@
 import test from 'ava';
 import format from './junit';
 
-const exampleReport = {
+const report = {
 	valid: false,
-	errorCount: 0,
-	warningCount: 2,
+	errorCount: 1,
+	warningCount: 1,
 	results: [
 		{
 			valid: false,
@@ -17,6 +17,8 @@ const exampleReport = {
 					name: 'type-enum',
 					message: 'type must be one of [feat,fix,test]',
 				},
+			],
+			warnings: [
 				{
 					valid: true,
 					level: 1,
@@ -25,6 +27,12 @@ const exampleReport = {
 				},
 			],
 		},
+		{
+			valid: true,
+			input: 'fix: junit including succesful tests',
+			errors: [],
+			warnings: [],
+		},
 	],
 };
 
@@ -32,41 +40,67 @@ test('returns string without report', t => {
 	t.is('string', typeof format());
 });
 
-test('output contains testsuite with summary', t => {
-	const output = format(exampleReport);
-
-	t.true(output.includes('testsuite name="commitlint"'));
-	t.true(output.includes(`failures="${exampleReport.errorCount}"`));
-	t.true(output.includes(`tests="${exampleReport.errorCount}"`));
+test('contains testsuite summary', t => {
+	t.true(format(report).includes('testsuite name="commitlint" failures="2" tests="3"'));
 });
 
-test('output contains testsuite with commit header', t => {
-	const output = format(exampleReport);
-	const errors = exampleReport.results[0].errors.length;
+test('contains testsuite summary without any tests', t => {
+	const output = format({
+		valid: true,
+		errorCount: 0,
+		warningCount: 0,
+		results: [],
+	});
 
-	t.true(output.includes('testsuite name="foo: bar"'));
-	t.true(output.includes(`failures="${errors}"`));
-	t.true(output.includes(`tests="${errors}"`));
+	t.true(output.includes('testsuite name="commitlint" failures="0" tests="0"'));
 });
 
-test('output contains testcase elements with rule name', t => {
-	const output = format(exampleReport);
+test('contains testsuite summary with only valid tests', t => {
+	const output = format({
+		valid: true,
+		errorCount: 0,
+		warningCount: 0,
+		results: [
+			{
+				valid: true,
+				input: 'fix: junit including succesful tests',
+				errors: [],
+				warnings: [],
+			},
+			{
+				valid: true,
+				input: 'feat: add commitlint junit report formats',
+				errors: [],
+				warnings: [],
+			},
+		],
+	});
+
+	t.true(output.includes('testsuite name="commitlint" failures="0" tests="2"'));
+});
+
+test('contains testsuite with only commit header', t => {
+	t.true(format(report).includes('testsuite name="foo: bar" failures="2" tests="2"'));
+});
+
+test('contains testcase elements with rule name', t => {
+	const output = format(report);
 
 	t.true(output.includes('testcase name="type-enum"'));
 	t.true(output.includes('testcase name="subject-min-length"'));
 });
 
-test('output contains failure elements with issue level', t => {
-	const output = format(exampleReport);
+test('contains failure elements with issue level', t => {
+	const output = format(report);
 
 	t.true(output.includes('failure type="error"'));
 	t.true(output.includes('failure type="warning"'));
 });
 
-test('output contains rule issue explanation', t => {
-	const output = format(exampleReport);
-	const commit = exampleReport.results[0].input;
+test('contains rule issue explanation', t => {
+	const output = format(report);
+	const { input } = report.results[0];
 
-	t.true(output.includes(`type must be one of [feat,fix,test] (type-enum)\n\n${commit}`));
-	t.true(output.includes(`subject must not be shorter than 15 characters (subject-min-length)\n\n${commit}`));
+	t.true(output.includes(`type must be one of [feat,fix,test] (type-enum)\n\n${input}`));
+	t.true(output.includes(`subject must not be shorter than 15 characters (subject-min-length)\n\n${input}`));
 });
