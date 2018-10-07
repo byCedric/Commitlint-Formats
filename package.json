@@ -67,6 +67,13 @@
 					"excludeArrowFunctions": true
 				}
 			],
+			"flowtype/require-return-type": [
+				"error",
+				"always",
+				{
+					"excludeArrowFunctions": true
+				}
+			],
 			"import/default": "off",
 			"import/no-unresolved": "off",
 			"import/no-extraneous-dependencies": "off",
