@@ -19,6 +19,24 @@ function indent(level: number, line: string): string {
 }
 
 /**
+ * Escape a string to make it xml safe.
+ *
+ * @param  {string} text
+ * @return {string}
+ */
+function escape(text: string | number): string {
+	const characters = {
+		'<': '&lt;',
+		'>': '&gt;',
+		'&': '&amp;',
+		'\'': '&apos;',
+		'"': '&quot;',
+	};
+
+	return String(text).replace(/[<>&'"]/g, char => characters[char]);
+}
+
+/**
  * Create a new XML element containing various properties.
  * It can be configured to automatically add a newline, indentation and make it self closing.
  *
@@ -31,7 +49,7 @@ function createElement(tag: string, options: CreateElementOptions, attributes: a
 	const element = `<${tag}`;
 	const ending = options.noNewline ? '' : '\n';
 	const properties = Object.keys(attributes)
-		.map(key => `${key}="${attributes[key]}"`)
+		.map(key => `${key}="${escape(attributes[key])}"`)
 		.join(' ');
 
 	return indent(options.indent || 0, `${element} ${properties}>${ending}`);
@@ -72,17 +90,19 @@ function formatJunit(report?: Report): string {
 				issues.forEach(issue => {
 					const type = issue.level === 2 ? 'error' : 'warning';
 
-					output += indent(3, `<testcase name="${issue.name}">\n`);
-					output += indent(4, `<failure type="${type}">`);
+					output += createElement('testcase', { indent: 3 }, { name: issue.name });
+					output += createElement('failure', { indent: 4, noNewline: true }, { type });
+					output += '<![CDATA[';
 					output += `${issue.message} (${issue.name})\n`;
 					output += `\n${result.input}`;
+					output += ']]>';
 					output += '</failure>\n';
 					output += indent(3, '</testcase>\n');
 				});
 
 				output += indent(2, '</testsuite>\n');
 			} else {
-				output += indent(3, '<testcase name="valid" />\n');
+				output += createElement('testcase', { indent: 3 }, { name: 'valid' });
 				output += indent(2, '</testsuite>\n');
 			}
 		});
