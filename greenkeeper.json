@@ -1,19 +1,19 @@
 {
-  "groups": {
-    "default": {
-      "packages": [
-        "package.json"
-      ]
-    },
-    "commitlint-format-json": {
-      "packages": [
-        "packages/json/package.json"
-      ]
-    },
-    "commitlint-format-junit": {
-      "packages": [
-        "packages/junit/package.json"
-      ]
-    }
-  }
+	"groups": {
+		"default": {
+			"packages": [
+				"package.json"
+			]
+		},
+		"commitlint-format-json": {
+			"packages": [
+				"packages/json/package.json"
+			]
+		},
+		"commitlint-format-junit": {
+			"packages": [
+				"packages/junit/package.json"
+			]
+		}
+	}
 }
