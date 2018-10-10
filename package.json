@@ -19,7 +19,7 @@
 		"eslint-config-xo-flow": "^0.1.0",
 		"eslint-plugin-flowtype": "^2.50.3",
 		"flow-bin": "^0.82.0",
-		"lerna": "^3.4.1",
+		"lerna": "^3.4.3",
 		"nyc": "^13.0.1",
 		"xo": "^0.23.0"
 	},
