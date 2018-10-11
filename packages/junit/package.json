@@ -1,6 +1,6 @@
 {
 	"name": "commitlint-format-junit",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"description": "Format Commitlint output as JUnit",
 	"keywords": [
 		"commitlint",
