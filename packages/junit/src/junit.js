@@ -4,7 +4,7 @@ import { type Report } from '@commitlint/format';
 type CreateElementOptions = {
 	noNewline?: boolean,
 	indent?: number,
-	closes?: boolean,
+	selfClosing?: boolean,
 };
 
 /**
@@ -48,7 +48,7 @@ function escape(text: string | number): string {
  */
 function createElement(tag: string, options: CreateElementOptions, attributes: any): string {
 	const element = `<${tag}`;
-	const closing = options.closes ? ' />' : '>';
+	const closing = options.selfClosing ? ' />' : '>';
 	const ending = options.noNewline ? '' : '\n';
 	const properties = Object.keys(attributes)
 		.map(key => `${key}="${escape(attributes[key])}"`)
@@ -106,7 +106,7 @@ function formatJunit(report?: Report): string {
 
 				output += indent(2, '</testsuite>\n');
 			} else {
-				output += createElement('testcase', { indent: 3, closes: true }, { name: 'valid' });
+				output += createElement('testcase', { indent: 3, selfClosing: true }, { name: 'valid' });
 				output += indent(2, '</testsuite>\n');
 			}
 		});
