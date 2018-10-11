@@ -104,3 +104,7 @@ test('contains rule issue explanation', t => {
 	t.true(output.includes(`type must be one of [feat,fix,test] (type-enum)\n\n${input}`));
 	t.true(output.includes(`subject must not be shorter than 15 characters (subject-min-length)\n\n${input}`));
 });
+
+test('contains self-closing valid test cases', t => {
+	t.true(format(report).includes('<testcase name="valid" />'));
+});
