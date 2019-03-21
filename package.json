@@ -7,7 +7,7 @@
 		"build": "lerna exec --parallel 'babel src --out-dir lib --ignore \"**/*.test.js\" --root-mode upward --source-maps --verbose'"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.1.2",
+		"@babel/cli": "^7.2.3",
 		"@babel/core": "^7.1.2",
 		"@babel/preset-flow": "^7.0.0",
 		"@babel/register": "^7.0.0",
