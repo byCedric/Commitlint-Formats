@@ -25,6 +25,6 @@
 		"lib"
 	],
 	"peerDependencies": {
-		"commitlint": "^7.2.0"
+		"commitlint": "^8.0.0"
 	}
 }
